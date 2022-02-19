@@ -1,10 +1,9 @@
 import './App.css';
 
-const buttonAlert = () => {
-  window.alert("Hello World")
-}
-
 function App() {
+  const buttonAlert = () => {
+    window.alert("Hello World")
+  }
   return (
         <button onClick={buttonAlert}>
             Hello World
