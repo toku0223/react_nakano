@@ -1,10 +1,14 @@
 import './App.css';
 
+const buttonAlert = () => {
+  window.alert("Hello World")
+}
+
 function App() {
   return (
-        <p>
-          Hello World
-        </p>
+        <button onClick={buttonAlert}>
+            Hello World
+        </button>
   );
 }
 
