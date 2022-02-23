@@ -6,7 +6,7 @@ function App() {
     window.alert("Hello World")
   }
 
-  const name = 'nakano';
+  const [name, setState] = useState('nakano');
 
   const [count, setCount] = useState(0);
 
@@ -14,6 +14,26 @@ function App() {
     setCount(count + 1);
     console.log(count);
   };
+
+  const decrement = () => {
+    setCount(count - 1);
+    console.log(count);
+  };
+
+  const reset = () => {
+    setCount(0);
+    console.log(count);
+  };
+
+  const nameplus = () => {
+    setState(name + "nakano");
+    console.log(name);
+  };
+
+  const namereset = () => {
+    setState('nakano')
+    console.log(name)
+  }
 
   return (
     <div>
@@ -29,10 +49,17 @@ function App() {
       <button>button</button>
       <input type="text" />
       <a href="#">a タグ</a>
-
-      <button onClick={increment}>いいね</button>
+      <br></br>
+      <button onClick={increment}>いいね！</button>
       {count}
-
+      <button onClick={decrement}>よくないね！</button>
+      <br />
+      <button onClick={reset}>リセット</button>
+      <br />
+      <button onClick={nameplus}>add</button>
+      <br />
+      <button onClick={namereset}>addreset</button>
+      <br />
       {name}
 
     </div>
