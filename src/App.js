@@ -51,11 +51,35 @@ function App() {
 
   return (
     <div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th align='left'>id</th>
+              <th align='left'>name</th>
+              <th align='left'>date</th>
+            </tr>
+          </thead>
 
+          {sampleArray.map((data, index) => {
+            console.log(index)
+            return (
+              <tbody key={(index)}>
+                <tr>
+                  <td>{data.id}</td>
+                  <td>{data.name}</td>
+                  <td>{data.date}</td>
+                </tr>
+              </tbody>
+
+            )
+          })}
+        </table>
+      </div>
       <div>
         {sampleArray.map((data, index) => {
           console.log(index)
-          return <Card name={data.name} date={data.date} key={index} />;
+          return <Card id={data.id} name={data.name} date={data.date} key={index} />;
         })}
 
         <Card name="nakano" date="2022/02/26" />
@@ -90,7 +114,7 @@ function App() {
         {name}
 
       </div>
-    </div>
+    </div >
   );
 }
 
