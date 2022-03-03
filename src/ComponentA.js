@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const ComponentA = () => {
-
     const sampleArray = [
         { id: 1, name: 'aaa', date: 19920527 },
         { id: 2, name: 'bbb', date: 19920528 },
@@ -66,11 +65,8 @@ const ComponentA = () => {
                         </tbody>
                     )
                 })}
-
-
             </Table>
         </>
-
     );
 };
 
