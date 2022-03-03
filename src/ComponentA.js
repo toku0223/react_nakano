@@ -1,11 +1,17 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Button, Table, Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const ComponentA = () => {
 
+
+const ComponentA = () => {
+    const navigate = useNavigate()
+    const backPage = () => {
+        navigate("/")
+    }
     const sampleArray = [
         { id: 1, name: 'aaa', date: 19920527 },
         { id: 2, name: 'bbb', date: 19920528 },
@@ -24,10 +30,10 @@ const ComponentA = () => {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="componentb" >ComponentBへ移動</Link>
+                    <Link to="/componentb" >ComponentBへ移動</Link>
                 </li>
                 <li>
-                    <Link to="componentc" >ComponentCへ移動</Link>
+                    <Link to="/componentc" >ComponentCへ移動</Link>
                 </li>
             </ul>
             <br />
