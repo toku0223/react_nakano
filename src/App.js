@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import ComponentA from './ComponentA';
-import ComponentB from './ComponentB';
-import ComponentC from './ComponentC';
+import ComponentA from './Components/ComponentA';
+import ComponentB from './Components/ComponentB';
+import ComponentC from './Components/ComponentC';
 import Home from './Home';
 
 

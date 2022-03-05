@@ -13,9 +13,9 @@ const Home = () => {
 
     return (
         <>
-<ul>
+            <ul>
                 <li>
-                    <Button variant="primary">Hello world</Button>
+                    <Button onClick={() => navigate("/componenta")} variant="primary">Hello world</Button>
                 </li>
                 <li>
                     <Link to="/componenta">ComponentAへ移動</Link>
