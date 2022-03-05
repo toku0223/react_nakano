@@ -40,17 +40,16 @@ const ComponentA = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        data.map((d, index) => {
-                            return (
-                                <tr>
-                                    <td>{d.userId}</td>
-                                    <td>{d.id}</td>
-                                    <td>{d.title}</td>
-                                    <td>{d.completed.toString()}</td>
-                                </tr>
-                            )
-                        })
+                    {data.map((d, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>{d.userId}</td>
+                                <td>{d.id}</td>
+                                <td>{d.title}</td>
+                                <td>{d.completed.toString()}</td>
+                            </tr>
+                        )
+                    })
                     }
 
                 </tbody>
