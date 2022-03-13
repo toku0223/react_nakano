@@ -1,15 +1,43 @@
 import axios from 'axios';
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import { Table, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import reducer from '../reducers/index';
 import { render } from '@testing-library/react';
 
+const initialCount = {
+    count: 0
+};
 
 const ComponentC = () => {
 
     const [data, setData] = useState([])
     const [count, setCount] = useState(0)
+    const [state, dispatch] = useReducer(reducer, initialCount);
+
+
+
+    const increment = () => {
+        console.log('increment');
+        dispatch({
+            type: 'INCREMENT'
+        });
+    };
+
+    const decrement = () => {
+        console.log('decrement');
+        dispatch({
+            type: 'DECREMENT'
+        });
+    };
+
+    const reset = () => {
+        console.log('reset');
+        dispatch({
+            type: 'RESET'
+        });
+    };
 
     useEffect(() => {
         return () => {
@@ -33,6 +61,10 @@ const ComponentC = () => {
                 <div>ComponentC</div>
                 <Link to="/componenta">ComponentAへ移動</Link>
             </div>
+            <button onClick={increment}>+</button>
+            <button onClick={decrement}>-</button>
+            <h1>{state.count}</h1>
+            <button onClick={reset}>RESET</button>
             <Button onClick={() => setCount(count + 1)}>GetData</Button>
             <Table striped bordered hover>
                 <thead>
