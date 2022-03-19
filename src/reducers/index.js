@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, RESET, ADD_EVENT, VANISH } from '../actions/index';
+import { INCREMENT, DECREMENT, RESET, ADD_EVENT, VANISH, TAKE } from '../actions/index';
 
 const reducer = (state = [], action) => {
     switch (action.type) {
@@ -9,13 +9,15 @@ const reducer = (state = [], action) => {
         case RESET:
             return { ...state, count: 0 };
         case ADD_EVENT:
-            const event = { title: action.title, body: action.body };
+            const event = { title: action.title, body: action.body, comment: action.comment };
             const id = state.length + 1;
             return [...state, { id, ...event }];
         case VANISH:
-            const eventDelete = { title: action.title, body: action.body };
-            const idDelete = state.length;
-            return [...state, { idDelete, ...eventDelete }];
+            return [];
+        case TAKE:
+            const takeevent = { title: action.title, body: action.body, comment: action.comment };
+            const takeid = state.length - 1;
+            return [...state, { takeid, ...takeevent }];
         default:
             return state;
     }

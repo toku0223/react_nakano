@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect, useReducer } from 'react';
-import { ADD_EVENT, VANISH } from '../actions/index';
+import { ADD_EVENT, VANISH, TAKE } from '../actions/index';
 import reducer from '../reducers/index';
 import { Link } from 'react-router-dom';
 import { Button, Form, Table } from 'react-bootstrap'
@@ -12,16 +12,20 @@ const ComponentB = () => {
     const [state, dispatch] = useReducer(reducer, []);
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    const [comment, setComment] = useState('');
+
 
     const handleClick = (e) => {
         e.preventDefault();
         dispatch({
             type: ADD_EVENT,
             title,
-            body
+            body,
+            comment
         });
         setTitle('')
         setBody('')
+        setComment('')
     }
 
     const handleDelete = (e) => {
@@ -29,10 +33,20 @@ const ComponentB = () => {
         dispatch({
             type: VANISH,
         })
-        setTitle('')
-        setBody('')
     }
 
+    const handleTake = (e) => {
+        e.preventDefault();
+        dispatch({
+            type: TAKE,
+            title,
+            body,
+            comment
+        });
+        setTitle('')
+        setBody('')
+        setComment('')
+    }
 
     useEffect(() => {
         console.log('useEffect が呼び出されました。');
@@ -63,6 +77,13 @@ const ComponentB = () => {
                         value={body}
                         onChange={(e) => setBody(e.target.value)}
                     />
+                    <Form.Label>Comment</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="comment"
+                        value={comment}
+                        onChange={(e) => setComment(e.target.value)}
+                    />
                 </Form.Group>
                 <Button variant="primary" onClick={handleClick}>イベント作成</Button>
                 <Button variant="danger" onClick={handleDelete}>イベント全削除</Button>
@@ -75,6 +96,7 @@ const ComponentB = () => {
                         <th>id</th>
                         <th>title</th>
                         <th>body</th>
+                        <th>comment</th>
                         <th>#</th>
                     </tr>
                 </thead>
@@ -85,8 +107,9 @@ const ComponentB = () => {
                                 <td>{data.id}</td>
                                 <td>{data.title}</td>
                                 <td>{data.body}</td>
+                                <td>{data.comment}</td>
                                 <td>
-                                    <Button variant="danger">削除</Button>
+                                    <Button variant="danger" onClick={handleTake}>削除</Button>
                                 </td>
                             </tr>
                         )
