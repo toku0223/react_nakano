@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const ComponentB = () => {
     const [data, setData] = useState([])
     const [state, dispatch] = useReducer(reducer, []);
+    const [id, setId] = useState('')
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [comment, setComment] = useState('');
@@ -35,18 +36,7 @@ const ComponentB = () => {
         })
     }
 
-    const handleTake = (e) => {
-        e.preventDefault();
-        dispatch({
-            type: TAKE,
-            title,
-            body,
-            comment
-        });
-        setTitle('')
-        setBody('')
-        setComment('')
-    }
+
 
     useEffect(() => {
         console.log('useEffect が呼び出されました。');
@@ -102,6 +92,15 @@ const ComponentB = () => {
                 </thead>
                 <tbody>
                     {state.map((data, index) => {
+                        const handleTake = (e) => {
+                            e.preventDefault();
+                            console.log(data.id)
+                            dispatch({
+                                type: TAKE,
+                                id: data.id
+                            });
+
+                        }
                         return (
                             <tr key={index}>
                                 <td>{data.id}</td>

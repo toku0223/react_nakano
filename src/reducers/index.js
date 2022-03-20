@@ -11,13 +11,21 @@ const reducer = (state = [], action) => {
         case ADD_EVENT:
             const event = { title: action.title, body: action.body, comment: action.comment };
             const id = state.length + 1;
+            console.log("これはマスマックス", Math.max(id))
+
+            if (state.length !== 0) {
+                const ids = state.map(data => Number(data.id))
+                console.log(Math.max(ids))
+            }
             return [...state, { id, ...event }];
         case VANISH:
             return [];
         case TAKE:
-            const takeevent = { title: action.title, body: action.body, comment: action.comment };
-            const takeid = state.length - 1;
-            return [...state, { takeid, ...takeevent }];
+            console.log(action.id)
+            console.log(state)
+            const result = state.filter(event => event.id !== (action.id));
+            console.log(result);
+            return result;
         default:
             return state;
     }
