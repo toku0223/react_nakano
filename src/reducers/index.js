@@ -12,11 +12,8 @@ const reducer = (state = [], action) => {
             const event = { title: action.title, body: action.body, comment: action.comment };
             const id = state.length + 1;
             console.log("これはマスマックス", Math.max(id))
-
-            if (state.length !== 0) {
-                const ids = state.map(data => Number(data.id))
-                console.log(Math.max(ids))
-            }
+            const ids = state.map(data => Number(data.id))
+            console.log(ids.length)
             return [...state, { id, ...event }];
         case VANISH:
             return [];
