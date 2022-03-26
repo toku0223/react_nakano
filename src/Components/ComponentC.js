@@ -5,6 +5,7 @@ import { Table, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reducer from '../reducers/index';
 import { render } from '@testing-library/react';
+import ComponentD from './ComponentD';
 
 const initialCount = {
     count: 0
@@ -57,6 +58,7 @@ const ComponentC = () => {
 
     return (
         <>
+            <ComponentD />
             <div>
                 <div>ComponentC</div>
                 <Link to="/componenta">ComponentAへ移動</Link>

@@ -10,10 +10,14 @@ const reducer = (state = [], action) => {
             return { ...state, count: 0 };
         case ADD_EVENT:
             const event = { title: action.title, body: action.body, comment: action.comment };
-            const id = state.length + 1;
-            console.log("これはマスマックス", Math.max(id))
-            const ids = state.map(data => Number(data.id))
-            console.log(ids.length)
+            let id = 0
+            if (state.length === 0) {
+                id = state.length + 1;
+            } else {
+                let temp = []
+                state.forEach(data => temp.push(data.id))
+                id = Math.max(...temp) + 1
+            }
             return [...state, { id, ...event }];
         case VANISH:
             return [];
