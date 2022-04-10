@@ -1,5 +1,7 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { DECREMENT, INCREMENT, RESET, INCRETEN, ADD_DATA } from '../actions/index';
+import { Store } from '../store/index';
 import { Link } from 'react-router-dom';
 import { Table } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,13 +12,21 @@ const ComponentA = () => {
 
     const [data, setData] = useState([])
 
+    const { globalState, setGlobalState } = useContext(Store);
+
+
     useEffect(() => {
         console.log('useEffect が呼び出されました。');
 
         axios.get('https://jsonplaceholder.typicode.com/todos').then(res => {
             console.log(res, 'res check')
             setData(res.data)
+            setGlobalState({
+                type: ADD_DATA,
+                data: res.data
+            });
         })
+
     }, []);
 
     const increment = () => {

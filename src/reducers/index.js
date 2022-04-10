@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, RESET, ADD_EVENT, VANISH, TAKE } from '../actions/index';
+import { INCREMENT, DECREMENT, RESET, ADD_EVENT, VANISH, TAKE, INCRETEN, ADD_DATA } from '../actions/index';
 
 const reducer = (state = [], action) => {
     switch (action.type) {
@@ -6,6 +6,13 @@ const reducer = (state = [], action) => {
             return { ...state, count: state.count + 1 };
         case DECREMENT:
             return { ...state, count: state.count - 1 };
+        case INCRETEN:
+            console.log(state.count)
+            if (state.count % 3 === 0 && state.count !== 0) {
+                return { ...state, count: state.count + 10 };
+            } else {
+                return state
+            }
         case RESET:
             return { ...state, count: 0 };
         case ADD_EVENT:
@@ -27,8 +34,15 @@ const reducer = (state = [], action) => {
             const result = state.filter(event => event.id !== (action.id));
             console.log(result);
             return result;
+
+        case ADD_DATA:
+            console.log(action.data)
+            return { ...state, data: action.data };
         default:
             return state;
+
+
+
     }
 };
 
